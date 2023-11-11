@@ -2,28 +2,53 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Update user</title>
+    <title>Update User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        label {
+            margin-bottom: 5px;
+            display: block;
+        }
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-
 <form th:method="PATCH" th:action="@{/admin/update}" th:object="${editUser}">
-    <label for="username">Enter username: </label>
+    <label for="username">Enter username:</label>
     <input type="text" th:field="*{username}" id="username"/>
     <br/>
-    <label for="password">Enter password: </label>
+    <label for="password">Enter password:</label>
     <input type="text" th:field="*{password}" id="password"/>
     <br/>
-    <label for="email">Enter email: </label>
+    <label for="email">Enter email:</label>
     <input type="text" th:field="*{email}" id="email"/>
     <br/>
     <input type="hidden" th:field="*{id}" th:value="${editUser.id}" />
     <input type="hidden" th:field="*{roles}" th:value="${editUser.roles}" />
-    <button type="submit">Update!</button>
+    <button type="submit">Update</button>
 </form>
-
-<br>
 <br>
 <a class="link" th:href="@{/logout}">Logout</a>
-
 </body>
 </html>

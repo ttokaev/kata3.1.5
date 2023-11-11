@@ -1,15 +1,35 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <title>Spring Security Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .profile-info {
+            margin-bottom: 10px;
+        }
+        .logout-link {
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 3px;
+        }
+        .logout-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-<a th:text="${user.getId()}">VALUE</a>
-<a th:text="${user.getUsername()}">VALUE</a>
-<a th:text="${user.getEmail()}">VALUE</a>
-<br>
-<br>
-<a class="link" th:href="@{/logout}">Logout</a>
-
+<div class="profile-info">
+    <p>ID: <span th:text="${user.getId()}"></span></p>
+    <p>Username: <span th:text="${user.getUsername()}"></span></p>
+    <p>Email: <span th:text="${user.getEmail()}"></span></p>
+</div>
+<a class="logout-link" th:href="@{/logout}">Logout</a>
 </body>
 </html>

@@ -1,18 +1,18 @@
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
                        id BIGINT UNSIGNED AUTO_INCREMENT,
-                       username VARCHAR(30) NOT NULL,
+                       username VARCHAR(30) UNIQUE,
                        password VARCHAR(80) NOT NULL,
                        email VARCHAR(50) UNIQUE,
                        PRIMARY KEY (id)
 );
 
-CREATE TABLE roles (
+CREATE TABLE IF NOT EXISTS roles (
                        id INT UNSIGNED AUTO_INCREMENT,
-                       name VARCHAR(50) NOT NULL,
+                       name VARCHAR(50) NOT NULL UNIQUE,
                        PRIMARY KEY (id)
 );
 
-CREATE TABLE users_roles (
+CREATE TABLE IF NOT EXISTS users_roles (
                              user_id BIGINT UNSIGNED NOT NULL,
                              role_id INT UNSIGNED NOT NULL,
                              PRIMARY KEY (user_id, role_id),

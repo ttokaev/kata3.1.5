@@ -2,26 +2,60 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>All</title>
+  <title>All Users</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .user-container {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .user-container a {
+      text-decoration: none;
+      color: #007bff;
+      display: block;
+      margin-bottom: 5px;
+    }
+    hr {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border: 0;
+      border-top: 1px solid #ccc;
+    }
+    .create-link {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+    .create-link:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-
 <div th:each="user : ${users}">
-  <a th:href="@{/admin/user(id=${user.getId()})}" th:text="${user.getId()}">user </a>
-  <a th:text="${user.getUsername()}">user </a>
-  <a th:text="${user.getPassword()}">user </a>
-  <a th:text="${user.getEmail()}">user </a>
-
+  <div class="user-container">
+    <a>Id: <span th:text="${user.id}"></span></a>
+    <a th:href="@{/admin/user(id=${user.id})}" th:text="${user.username}"></a>
+    <br>
+    <a>Username: <span th:text="${user.username}"></span></a>
+    <br>
+    <a>Email: <span th:text="${user.email}"></span></a>
+    <br>
+  </div>
 </div>
 
-<br/>
-<hr/>
-
-<a href="/admin/new">Create new person</a>
-
+<a class="create-link" th:href="@{/admin/new}">Create new person</a>
 <br>
 <br>
 <a class="link" th:href="@{/logout}">Logout</a>
-
 </body>
 </html>
