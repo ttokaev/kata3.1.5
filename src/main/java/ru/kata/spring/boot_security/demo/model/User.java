@@ -62,4 +62,12 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return false;
     }
+
+    public String getAllRolesToString(){
+        StringBuilder stringBuilder = new StringBuilder();
+        for(Role role : roles){
+            stringBuilder.append(role).append(" ");
+        }
+        return stringBuilder.toString().replaceAll("ROLE_","").trim();
+    }
 }
