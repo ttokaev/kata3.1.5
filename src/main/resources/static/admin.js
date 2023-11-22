@@ -159,9 +159,6 @@ async function getAllUsers() {
     }
 }
 
-
-
-
 // добавление нового пользователя
 
 async function addUser() {
@@ -202,3 +199,13 @@ function clearAndHideAddForm() {
     document.getElementById("emailAdd").value = "";
     document.getElementById("passwordAdd").value = "";
 }
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    fetch(url + "/authorized")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('authName').innerText = data.username;
+            document.getElementById('authRoles').innerText = data.roles.map(role => role.name.replace('ROLE_', '')).join(' ');
+        })
+        .catch(error => console.error('Error:', error));
+});

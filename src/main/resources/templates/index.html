@@ -13,13 +13,13 @@
 <header>
   <nav class="navbar navbar-dark bg-dark navbar-fixed-top">
     <div class="container-fluid text-white">
-            <span class="navbar-header">
-                <span th:text="${username}"></span>
-                <span> with roles: </span>
-                <span th:each="role : ${role}"
-                      th:text="${role.getName().replace('ROLE_', '') + ' '}">
-                </span>
-            </span>
+
+      <span class="navbar-header">
+        <span id="authName"></span>
+        <span> with roles: </span>
+        <span id="authRoles"></span>
+      </span>
+
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
