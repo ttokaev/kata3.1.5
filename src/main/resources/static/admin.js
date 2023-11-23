@@ -1,4 +1,5 @@
 const url = 'http://localhost:8080/rest_admin/users'
+const user_url = 'http://localhost:8080/rest_user/users'
 
 // delete
 
@@ -201,11 +202,16 @@ function clearAndHideAddForm() {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    fetch(url + "/authorized")
+    fetch(user_url + "/authorized")
         .then(response => response.json())
         .then(data => {
             document.getElementById('authName').innerText = data.username;
             document.getElementById('authRoles').innerText = data.roles.map(role => role.name.replace('ROLE_', '')).join(' ');
+            document.getElementById('userId').innerText = data.id;
+            document.getElementById('userName').innerText = data.username;
+            document.getElementById('userEmail').innerText = data.email;
+            document.getElementById('userRoles').innerText = data.roles.map(role => role.name.replace('ROLE_', '')).join(' ');
+
         })
         .catch(error => console.error('Error:', error));
 });

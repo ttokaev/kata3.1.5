@@ -16,7 +16,6 @@ import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.UserService;
 import ru.kata.spring.boot_security.demo.service.UserServiceImpl;
 
-import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -34,11 +33,6 @@ public class RestAdminController {
     @GetMapping
     public ResponseEntity<List<User>> getUsers() {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
-    }
-
-    @GetMapping("/authorized")
-    public ResponseEntity<User> getUser(Principal principal) {
-        return new ResponseEntity<>(userService.getUserByName(principal.getName()), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
